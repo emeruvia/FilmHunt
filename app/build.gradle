@@ -3,6 +3,10 @@ plugins {
   id 'kotlin-android'
 }
 
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+def apiKeyProperties = new Properties()
+apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
+
 android {
   compileSdkVersion 30
   buildToolsVersion "30.0.3"
@@ -13,6 +17,8 @@ android {
     targetSdkVersion 30
     versionCode 1
     versionName "1.0"
+
+    buildConfigField("String", "THEMOVIEDB_API_KEY", apiKeyProperties['THEMOVIEDB_API_KEY'])
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
