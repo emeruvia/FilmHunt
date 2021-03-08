@@ -6,17 +6,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import dev.emg.filmhunt.App
+import dev.emg.filmhunt.data.vo.DataResult
 import dev.emg.filmhunt.data.vo.Movie
 import dev.emg.filmhunt.databinding.FragmentMoviesBinding
 import dev.emg.filmhunt.ui.MainViewModel
 import dev.emg.filmhunt.ui.moviedetail.MovieDetailFragment
 import dev.emg.filmhunt.ui.movies.MoviesAdapter.OnMovieListener
+import timber.log.Timber
 import javax.inject.Inject
 
 class MoviesFragment : Fragment(), OnMovieListener {
@@ -43,11 +44,12 @@ class MoviesFragment : Fragment(), OnMovieListener {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val adapter = MoviesAdapter(this)
-    val layoutManager = if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-      GridLayoutManager(requireContext(), 2)
-    } else {
-      GridLayoutManager(requireContext(), 4)
-    }
+    val layoutManager =
+      if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        GridLayoutManager(requireContext(), 2)
+      } else {
+        GridLayoutManager(requireContext(), 4)
+      }
     binding.recyclerview.apply {
       this.adapter = adapter
       this.layoutManager = layoutManager
@@ -68,8 +70,18 @@ class MoviesFragment : Fragment(), OnMovieListener {
 
     })
 
-    viewModel.movieLiveData.observe(viewLifecycleOwner) {
-      adapter.submitList(it)
+    viewModel.movieLiveData.observe(viewLifecycleOwner) { result ->
+      when (result) {
+        is DataResult.Success -> {
+          adapter.submitList(result.data)
+        }
+        is DataResult.Loading -> {
+
+        }
+        is DataResult.Error -> {
+
+        }
+      }
     }
   }
 
