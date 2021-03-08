@@ -1,6 +1,5 @@
 package dev.emg.filmhunt.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.emg.filmhunt.data.Repository
@@ -14,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 
 class MainViewModel() : ViewModel() {
 
@@ -37,12 +37,12 @@ class MainViewModel() : ViewModel() {
           val response = repository.searchMoviesByQuery("batman")
           response.collect {
             it.results.forEach { movie ->
-              Log.d("MainViewModel", "Response -> ${movie.title}")
+              Timber.d("Response -> ${movie.title}")
             }
           }
         }
       } catch (e: Exception) {
-        Log.e("MainViewModel", "Exception -> ${e}")
+        Timber.e(e, "Exception -> $e")
       }
     }
   }
