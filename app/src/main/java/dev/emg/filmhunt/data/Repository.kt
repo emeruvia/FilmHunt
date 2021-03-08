@@ -6,10 +6,10 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(private val service: MovieDbService) {
 
-  suspend fun searchMoviesByQuery(
+  fun searchMoviesByQuery(
     query: String = ""
   ) = flow {
-    emit(service.searchMovie(query))
+    emit(service.searchMovie(query).results)
   }
 
 }

@@ -2,6 +2,7 @@ package dev.emg.filmhunt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.observe
 import dev.emg.filmhunt.App
 import dev.emg.filmhunt.databinding.ActivityMainBinding
@@ -26,6 +27,21 @@ class MainActivity : AppCompatActivity() {
     binding.recyclerview.apply {
       this.adapter = adapter
     }
+
+    binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+      override fun onQueryTextSubmit(query: String?): Boolean {
+        query?.let {
+          viewModel.searchQuery(it)
+          return true
+        }
+        return false
+      }
+
+      override fun onQueryTextChange(newText: String?): Boolean {
+        return false
+      }
+
+    })
 
     viewModel.movieLiveData.observe(this) {
       adapter.submitList(it)
