@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.moviedetail.MovieDetailFragment"
+    >
+
+  <ImageView
+      android:id="@+id/poster"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dp_0"
+      android:background="@color/blue_grey_500"
+      app:layout_constraintBottom_toTopOf="@id/guideline"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/dp_16"
+      android:layout_marginBottom="@dimen/dp_8"
+      app:cardBackgroundColor="?colorSecondary"
+      app:cardCornerRadius="@dimen/dp_4"
+      app:cardElevation="@dimen/dp_0"
+      app:layout_constraintBottom_toBottomOf="@id/guideline"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@id/language"
+      >
+    <TextView
+        android:id="@+id/vote_average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?colorSecondary"
+        android:padding="@dimen/dp_4"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        tools:text="7.5"
+        />
+  </androidx.cardview.widget.CardView>
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.33"
+      />
+
+  <TextView
+      android:id="@+id/base_overview"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dp_16"
+      android:text="@string/base_overview"
+      android:textSize="@dimen/sp_18"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/guideline"
+      />
+
+  <TextView
+      android:id="@+id/language"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/dp_16"
+      app:layout_constraintBottom_toBottomOf="@id/base_overview"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/base_overview"
+      tools:text="English"
+      />
+
+  <TextView
+      android:id="@+id/overview"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginStart="@dimen/dp_16"
+      android:layout_marginTop="@dimen/dp_8"
+      android:layout_marginEnd="@dimen/dp_16"
+      android:layout_marginBottom="@dimen/dp_8"
+      android:textSize="@dimen/sp_14"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/base_overview"
+      tools:text="@string/lorem_ipsum"
+      />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

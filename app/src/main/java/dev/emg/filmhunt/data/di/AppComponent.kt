@@ -4,6 +4,8 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import dev.emg.filmhunt.ui.MainActivity
+import dev.emg.filmhunt.ui.moviedetail.MovieDetailFragment
+import dev.emg.filmhunt.ui.movies.MoviesFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -16,5 +18,7 @@ interface AppComponent {
   }
 
   fun inject(activity: MainActivity)
+  fun inject(fragment: MoviesFragment)
+  fun inject(fragment: MovieDetailFragment)
 
 }

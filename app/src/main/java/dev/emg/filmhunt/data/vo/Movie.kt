@@ -1,7 +1,10 @@
 package dev.emg.filmhunt.data.vo
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Movie(
   val id: Int,
   val adult: Boolean,
@@ -17,4 +20,4 @@ data class Movie(
   @SerializedName("genre_ids") val genreIds: List<Int>,
   @SerializedName("poster_path") val posterPath: String?,
   @SerializedName("backdrop_path") val backdropPath: String?
-)
+) : Parcelable
