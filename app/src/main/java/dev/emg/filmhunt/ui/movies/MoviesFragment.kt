@@ -72,7 +72,7 @@ class MoviesFragment : Fragment(), OnMovieListener {
   override fun onMovieClicked(movie: Movie) {
     val transaction = requireActivity().supportFragmentManager.beginTransaction()
     transaction.addToBackStack(TAG)
-    transaction.replace(binding.root.id, MovieDetailFragment.create(movie))
+    transaction.replace(binding.root.id, MovieDetailFragment.create(movie), MovieDetailFragment.TAG)
     transaction.commit()
   }
 
