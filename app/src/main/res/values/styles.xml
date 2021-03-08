@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="ShapeAppearanceOverlay.App.SelectedCornerRadius" parent="">
+    <item name="cornerSizeTopRight">@dimen/dp_24</item>
+    <item name="cornerFamilyTopRight">rounded</item>
+    <item name="cornerSizeBottomLeft">@dimen/dp_24</item>
+    <item name="cornerFamilyBottomLeft">rounded</item>
+  </style>
+
+</resources>

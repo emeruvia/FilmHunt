@@ -41,6 +41,7 @@ class MovieDetailFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
 
     movie?.let { movie ->
+      binding.title.text = movie.title
       binding.overview.text = movie.overview
       binding.language.text = movie.originalLanguage
       binding.voteAverage.text = movie.voteAvg.toString()

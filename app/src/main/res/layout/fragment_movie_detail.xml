@@ -12,19 +12,43 @@
       android:layout_width="match_parent"
       android:layout_height="@dimen/dp_0"
       android:background="@color/blue_grey_500"
+      android:scaleType="centerCrop"
       app:layout_constraintBottom_toTopOf="@id/guideline"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       />
 
+  <androidx.cardview.widget.CardView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/dp_16"
+      android:layout_marginBottom="@dimen/dp_8"
+      app:cardBackgroundColor="?colorAccent"
+      app:cardCornerRadius="@dimen/dp_4"
+      app:cardElevation="@dimen/dp_0"
+      app:layout_constraintBottom_toBottomOf="@id/guideline"
+      app:layout_constraintStart_toStartOf="parent"
+      >
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?colorSecondary"
+        android:padding="@dimen/dp_4"
+        android:textColor="?colorOnPrimary"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        tools:text="Movie Title"
+        />
+  </androidx.cardview.widget.CardView>
 
   <androidx.cardview.widget.CardView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginEnd="@dimen/dp_16"
       android:layout_marginBottom="@dimen/dp_8"
-      app:cardBackgroundColor="?colorSecondary"
+      app:cardBackgroundColor="?colorAccent"
       app:cardCornerRadius="@dimen/dp_4"
       app:cardElevation="@dimen/dp_0"
       app:layout_constraintBottom_toBottomOf="@id/guideline"
@@ -37,6 +61,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?colorSecondary"
         android:padding="@dimen/dp_4"
+        android:textColor="?colorOnPrimary"
         android:textSize="@dimen/sp_18"
         android:textStyle="bold"
         tools:text="7.5"
@@ -48,7 +73,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal"
-      app:layout_constraintGuide_percent="0.33"
+      app:layout_constraintGuide_percent="0.45"
       />
 
   <TextView

@@ -24,9 +24,10 @@
       android:id="@+id/recyclerview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       tools:listitem="@layout/item_movie"
+      tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      tools:spanCount="2"
       />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

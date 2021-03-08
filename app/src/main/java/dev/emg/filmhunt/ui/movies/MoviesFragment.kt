@@ -1,13 +1,16 @@
 package dev.emg.filmhunt.ui.movies
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.GridLayoutManager
 import dev.emg.filmhunt.App
 import dev.emg.filmhunt.data.vo.Movie
 import dev.emg.filmhunt.databinding.FragmentMoviesBinding
@@ -40,8 +43,14 @@ class MoviesFragment : Fragment(), OnMovieListener {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val adapter = MoviesAdapter(this)
+    val layoutManager = if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+      GridLayoutManager(requireContext(), 2)
+    } else {
+      GridLayoutManager(requireContext(), 4)
+    }
     binding.recyclerview.apply {
       this.adapter = adapter
+      this.layoutManager = layoutManager
     }
 
     binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

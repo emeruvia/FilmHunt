@@ -13,7 +13,6 @@ class MovieViewHolder(private val binding: ItemMovieBinding) : ViewHolder(bindin
 
   fun bind(movie: Movie, listener: OnMovieListener) {
     binding.moviePoster.load(Utils.getFullImageUrl(movie.posterPath))
-    binding.movieDescription.text = movie.overview
     binding.movieTitle.text = movie.title
     binding.root.setOnClickListener {
       listener.onMovieClicked(movie)
