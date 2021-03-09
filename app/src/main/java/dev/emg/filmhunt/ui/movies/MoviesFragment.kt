@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import dev.emg.filmhunt.App
 import dev.emg.filmhunt.data.vo.DataResult
 import dev.emg.filmhunt.data.vo.Movie
@@ -79,6 +80,7 @@ class MoviesFragment : Fragment(), OnMovieListener {
 
         }
         is DataResult.Error -> {
+          Snackbar.make(binding.container, "Error: ${result.msg}", Snackbar.LENGTH_LONG).show()
           Timber.e(result.e, "Error -> ${result.msg}")
         }
       }
