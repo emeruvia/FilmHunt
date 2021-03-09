@@ -42,6 +42,8 @@
       app:layout_constraintStart_toStartOf="@id/movie_poster"
       >
     <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
         android:id="@+id/movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

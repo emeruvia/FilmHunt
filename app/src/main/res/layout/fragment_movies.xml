@@ -16,6 +16,13 @@
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:background="@drawable/background_search_view"
+        android:elevation="@dimen/dp_8"
+        app:iconifiedByDefault="false"
         app:queryHint="@string/search_hint"
         />
   </com.google.android.material.appbar.AppBarLayout>
@@ -25,8 +32,8 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      tools:listitem="@layout/item_movie"
       tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      tools:listitem="@layout/item_movie"
       tools:spanCount="2"
       />
 
