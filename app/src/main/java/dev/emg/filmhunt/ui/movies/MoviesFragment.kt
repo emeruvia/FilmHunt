@@ -60,6 +60,7 @@ class MoviesFragment : Fragment(), OnMovieListener {
       override fun onQueryTextSubmit(query: String?): Boolean {
         query?.let {
           viewModel.searchApiByQuery(it)
+          binding.searchBar.clearFocus()
           return true
         }
         return false
