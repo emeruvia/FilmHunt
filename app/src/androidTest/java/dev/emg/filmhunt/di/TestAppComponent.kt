@@ -6,5 +6,5 @@ import dev.emg.filmhunt.data.di.NetworkModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class])
+@Component(modules = [TestRepositoryModule::class])
 interface TestAppComponent : AppComponent
