@@ -58,7 +58,7 @@ class MoviesFragment : Fragment(), OnMovieListener {
     binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
       override fun onQueryTextSubmit(query: String?): Boolean {
         query?.let {
-          viewModel.searchQuery(it)
+          viewModel.searchApiByQuery(it)
           return true
         }
         return false
@@ -79,7 +79,7 @@ class MoviesFragment : Fragment(), OnMovieListener {
 
         }
         is DataResult.Error -> {
-
+          Timber.e(result.e, "Error -> ${result.msg}")
         }
       }
     }
