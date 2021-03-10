@@ -16,7 +16,7 @@ Rename `sampleapikey.properties` to `apikey.properties`, then add your MovieDB a
 - Retrofit2 / OkHttp
 
 ## Preview
-<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_1.png" width="150" height="200">
-<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_2.png" width="100" height="100">
-<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_3.png" width="100" height="100">
-<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_4.png" width="100" height="100">
+<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_1.png" width="400" height="700">
+<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_2.png" width="400" height="700">
+<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_3.png" width="400" height="700">
+<img src="https://github.com/emeruvia/FilmHunt/blob/master/images/image_4.png" width="400" height="700">
