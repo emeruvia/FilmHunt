@@ -2,6 +2,8 @@ package dev.emg.filmhunt.data.di
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import dev.emg.filmhunt.BuildConfig
 import dev.emg.filmhunt.data.network.MovieDbService
 import okhttp3.OkHttpClient
@@ -13,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
   @Singleton

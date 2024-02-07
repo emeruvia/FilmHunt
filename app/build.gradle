@@ -3,6 +3,7 @@ plugins {
   id 'kotlin-android'
   id 'kotlin-kapt'
   id 'kotlin-parcelize'
+  id 'com.google.dagger.hilt.android'
 }
 
 def apiKeyPropertiesFile = rootProject.file("apikey.properties")
@@ -22,6 +23,9 @@ android {
     buildConfigField("String", "THEMOVIEDB_API_KEY", apiKeyProperties['THEMOVIEDB_API_KEY'])
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    vectorDrawables {
+      useSupportLibrary true
+    }
   }
 
   buildTypes {
@@ -34,24 +38,41 @@ android {
   buildFeatures {
     buildConfig true
     viewBinding true
+    compose true
   }
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_17
     targetCompatibility JavaVersion.VERSION_17
   }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.4.8"
+  }
+
+  kapt {
+    correctErrorTypes true
+  }
   kotlinOptions {
     jvmTarget = '17'
   }
-
+  packaging {
+    resources {
+      excludes += '/META-INF/{AL2.0,LGPL2.1}'
+    }
+  }
 }
 
 dependencies {
 
+
+
   def arch_version = "2.1.0"
-  def coil_version = "1.1.1"
+  def coil_version = "2.5.0"
   def coroutine_version = "1.7.3"
   def dagger_version = "2.50"
+  debugImplementation 'androidx.compose.ui:ui-tooling'
+  debugImplementation 'androidx.compose.ui:ui-test-manifest'
   def lifecycle_version = "2.7.0"
   def retrofit_version = "2.9.0"
   def room_version = "2.6.1"
@@ -63,26 +84,27 @@ dependencies {
   implementation 'com.google.android.material:material:1.11.0'
   implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-  testImplementation 'junit:junit:4.13.2'
-  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
-  testImplementation 'org.mockito:mockito-core:5.10.0'
-  testImplementation 'android.arch.core:core-testing:1.1.1'
-
-  androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-  androidTestImplementation 'androidx.test:rules:1.5.0'
-  androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+  // Compoose
+  implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+  implementation 'androidx.activity:activity-compose:1.8.2'
+  implementation platform('androidx.compose:compose-bom:2023.08.00')
+  implementation 'androidx.compose.ui:ui'
+  implementation 'androidx.compose.ui:ui-graphics'
+  implementation 'androidx.compose.ui:ui-tooling-preview'
+  implementation 'androidx.compose.material3:material3'
 
   // Coil
   implementation "io.coil-kt:coil:$coil_version"
+  implementation "io.coil-kt:coil-compose:$coil_version"
 
   // Coroutines
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
 
   // Dagger2
-  implementation "com.google.dagger:dagger:$dagger_version"
-  kapt "com.google.dagger:dagger-compiler:$dagger_version"
-  kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+  implementation "com.google.dagger:hilt-android:$dagger_version"
+  kapt "com.google.dagger:hilt-compiler:$dagger_version"
+  androidTestImplementation "com.google.dagger:hilt-android:$dagger_version"
+  kaptAndroidTest "com.google.dagger:hilt-compiler:$dagger_version"
 
   // LiveData
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -101,4 +123,17 @@ dependencies {
 
   // ViewModel
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+
+  testImplementation 'junit:junit:4.13.2'
+  testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
+  testImplementation 'org.mockito:mockito-core:5.10.0'
+  testImplementation 'android.arch.core:core-testing:1.1.1'
+
+  androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+  androidTestImplementation 'androidx.test:rules:1.5.0'
+  androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+  androidTestImplementation platform('androidx.compose:compose-bom:2023.08.00')
+  androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
 }

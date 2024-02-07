@@ -8,6 +8,6 @@ sealed class DataResult<out T> {
 
   object Loading: DataResult<Nothing>()
 
-  data class Error(val e: Exception, val msg: String?): DataResult<Nothing>()
+  data class Error(val e: Throwable, val msg: String?): DataResult<Nothing>()
 
 }

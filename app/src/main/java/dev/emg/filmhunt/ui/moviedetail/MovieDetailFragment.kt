@@ -1,13 +1,11 @@
 package dev.emg.filmhunt.ui.moviedetail
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import coil.load
-import dev.emg.filmhunt.App
 import dev.emg.filmhunt.data.Utils
 import dev.emg.filmhunt.data.vo.Movie
 import dev.emg.filmhunt.databinding.FragmentMovieDetailBinding
@@ -18,12 +16,6 @@ class MovieDetailFragment : Fragment() {
   private val binding get() = _binding!!
 
   private var movie: Movie? = null
-
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
-    (requireActivity().application as App).appComponent.inject(this)
-  }
-
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
