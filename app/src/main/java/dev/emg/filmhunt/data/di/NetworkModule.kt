@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.emg.filmhunt.BuildConfig
+import dev.emg.filmhunt.data.network.ApiKeyInterceptor
 import dev.emg.filmhunt.data.network.MovieDbService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,9 +32,13 @@ class NetworkModule {
 
   @Singleton
   @Provides
-  fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
+  fun provideOkHttpClient(
+    interceptor: HttpLoggingInterceptor,
+    apiKeyInterceptor: ApiKeyInterceptor
+  ): OkHttpClient {
     return OkHttpClient.Builder()
       .addInterceptor(interceptor)
+      .addInterceptor(apiKeyInterceptor)
       .build()
   }
 
@@ -46,6 +51,11 @@ class NetworkModule {
       loggingInterceptor.level = NONE
     }
     return loggingInterceptor
+  }
+
+  @Provides
+  fun provideApiKeyInterceptor(): ApiKeyInterceptor {
+    return ApiKeyInterceptor()
   }
 
 }

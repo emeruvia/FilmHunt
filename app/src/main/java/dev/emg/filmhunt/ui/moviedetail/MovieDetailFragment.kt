@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import coil.load
-import dev.emg.filmhunt.data.Utils
+import dev.emg.filmhunt.data.toFullImageUrl
 import dev.emg.filmhunt.data.vo.Movie
 import dev.emg.filmhunt.databinding.FragmentMovieDetailBinding
 
@@ -38,7 +38,7 @@ class MovieDetailFragment : Fragment() {
       binding.language.text = movie.originalLanguage
       binding.voteAverage.text = movie.voteAvg.toString()
       movie.backdropPath?.let {
-        binding.poster.load(Utils.getFullImageUrl(it))
+        binding.poster.load(it.toFullImageUrl())
       }
     }
   }

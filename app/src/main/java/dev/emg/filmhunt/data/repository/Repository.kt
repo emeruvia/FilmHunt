@@ -6,6 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface Repository {
 
+  fun nowPlayingMovies(): Flow<DataResult<List<Movie>>>
+  fun popularMovies(): Flow<DataResult<List<Movie>>>
+  fun topRatedMovies(): Flow<DataResult<List<Movie>>>
+  fun upcomingMovies(): Flow<DataResult<List<Movie>>>
   fun searchMoviesByQuery(
     query: String = ""
   ): Flow<DataResult<List<Movie>>>

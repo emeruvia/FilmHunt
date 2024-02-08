@@ -22,8 +22,12 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
     get() = _movieStateFlow
 
   init {
+    searchMovie(query = "batman")
+  }
+
+  private fun searchMovie(query: String) {
     viewModelScope.launch(Dispatchers.IO) {
-      repository.searchMoviesByQuery("Batman").collect { results ->
+      repository.searchMoviesByQuery(query).collect { results ->
         when (results) {
           is DataResult.Loading -> {
             _movieStateFlow.value = MainScreenUiState.Loading
