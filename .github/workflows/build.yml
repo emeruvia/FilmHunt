@@ -16,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       # Second step - Set up jdk for building the project
-      - name: Set Up JDK 11
+      - name: Set Up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: '17'
           distribution: 'temurin'
       # Third step - Set gradle permissions
       - name: Change wrapper permissions
