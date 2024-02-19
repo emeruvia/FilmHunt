@@ -1,0 +1,29 @@
+name: GitHub Build Demo
+
+on:
+  push:
+
+jobs:
+
+  # Job name
+  build_demo:
+    name: Android Build Demo
+    runs-on: ubuntu-latest
+    continue-on-error: false
+
+    steps:
+      # First step - Checkout repository in GHA Runner
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Second step - Set up jdk for building the project
+      - name: Set Up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      # Third step - Set gradle permissions
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      # Fourth step - Build gradle project
+      - name: Build gradle project
+        run: ./gradlew build
